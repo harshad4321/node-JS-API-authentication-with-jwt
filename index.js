@@ -1,9 +1,16 @@
-const express =require('express')
+const express =require('express');
 const app = express();
-const mongoose =require('mongoose')
+const dotenv= require('dotenv');
+const mongoose =require('mongoose');
+
+dotenv.config();
 
 
 //Connect to DB
+mongoose.connect(
+    'process.env.DB_CONNECT',
+{userNewUrlParser:true},
+()=>console.log('connected to db...'));
 
 //Import Routes
 
