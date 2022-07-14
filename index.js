@@ -6,16 +6,17 @@ const mongoose =require('mongoose');
 dotenv.config();
 
 
-//Connect to DB
-mongoose.connect(
-    'process.env.DB_CONNECT',
-{userNewUrlParser:true},
-()=>console.log('connected to db...'));
-
 //Import Routes
-
 const authRouthe = require('./routes/auth');
 
+//Connect to DB
+mongoose.connect(
+    process.env.DB_CONNECT,
+{useNewUrlParser:true},
+()=>console.log('connected to db...'));
+
+//MiddleWare
+app.use(express.json());
 
 //Route Middlewares
 app.use('/api/user',authRouthe)
